@@ -1,38 +1,38 @@
-/******************************
-* Title: Rock Paper Scissor   *
-* Topic: C Game               *
-* programmer = Sachindu Sahan *
-* date: 2020/11/09            *
-*******************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 int main(void)
 {
-    int startGame, userChoice, botChoice, userScore=0, botScore=0;
+    int loop_count = 1;
+    int user_point = 0, computer_point = 0;
+    int user_choice, computer_choice;
     srand(time(NULL));
-    printf("\t1.Start\n\t2.Help\n\t3.Quit\n");
-    printf("Enter: ");
-    scanf("%d", &startGame);
-    if(startGame==1){
-        printf("\n1.Rock\n2.Paper\n3.Scissor\n");
-        printf("Enter: ");
-        scanf("%d", &userChoice);
-        botChoice = rand()%4+1;
-        if((userChoice==1)&&(botChoice==1)){
-	    int u_point=0;
-	    int b_point=0;
-	    userScore=userScore+u_point;
-	    botScore=botScore+b_point;
-	    printf("your score: %d\ncomputer score: %d\n", userScore, botScore);
-        }else{
-	    printf("not yet\n");
+    while(loop_count<=100){
+        printf("1.Rock\n2.Paper\n3.Scissor\n");
+        printf("Enter your choice: ");
+        scanf("%d", &user_choice);
+        computer_choice = rand()%4+1;
+        if((user_choice==1) && (computer_choice==1)){
+            user_point = user_point + 0;
+            computer_point = computer_point + 0;
+            printf("user: %d\ncomputer: %d\n", user_point, computer_point);
+            if(user_point>=100){
+                printf("You won\n");
+                break;
+            }else if(computer_point>=100){
+		printf("you loss\n");
+		break;
+            }else{
+		continue;
+            } // break //
+        }else if((user_choice==1) && (computer_choice==2)){
+            user_point = user_point + 0;
+            computer_point = computer_point + 10;
+        }else if((user_choice==1) && (computer_choice==3)){
+            user_point = user_point + 10;
+            computer_point = computer_point + 0;
         }
-    }else if(startGame==2){
-        printf("A player who decides to play rock will beat another player who has chosen scissors rock crushes scissors or sometimes blunts scissors but will lose to one who has played paper paper covers rock a play of paper will lose to a play of scissors scissors cuts paper");
-        printf("players: 2\nplaying time: instant\ngenre: hand game\nsetup time: none\n");
-    }else if(startGame==3){
-        printf("quiting...\n");
+        loop_count+=1;
     }
     return 0;
 }
